@@ -3,7 +3,6 @@ import 'package:care_task/core/widgets/app_snack_bar.dart';
 import 'package:care_task/features/favourite/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import '../../../responsive/responsive_layout.dart';
 
 class ProductDetailsAppbar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -26,9 +25,7 @@ class ProductDetailsAppbar extends StatelessWidget
           automaticallyImplyLeading: false,
           elevation: 0.0,
           surfaceTintColor: Colors.transparent,
-          leading: ResponsiveLayout.isDesktop(context)
-              ? null
-              : IconButton(
+          leading: IconButton(
                   icon: const Icon(
                     Icons.arrow_back,
                     color: Colors.white,

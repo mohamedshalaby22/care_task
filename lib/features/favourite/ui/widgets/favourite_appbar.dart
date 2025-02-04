@@ -1,6 +1,5 @@
 import 'package:care_task/core/theming/styles.dart';
 import 'package:flutter/material.dart';
-import '../../../responsive/responsive_layout.dart';
 
 class FavouriteAppbar extends StatelessWidget
     implements PreferredSizeWidget {
@@ -13,9 +12,7 @@ class FavouriteAppbar extends StatelessWidget
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
-        leading: ResponsiveLayout.isDesktop(context)
-            ? null
-            : IconButton(
+        leading: IconButton(
                 icon: const Icon(
                   Icons.arrow_back,
                   color: Colors.white,
