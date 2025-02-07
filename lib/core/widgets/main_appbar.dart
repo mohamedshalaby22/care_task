@@ -11,7 +11,7 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         children: [
           Text(
-            'CARECOMME',
+            'CARECOMM',
             style: TextStyles.font2BlackSemiBold,
           ),
           const Spacer(),
