@@ -11,8 +11,9 @@ class FavouriteListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final box = Hive.box<ProductModel>('favourite');
     return ValueListenableBuilder(
-      valueListenable: Hive.box('favourite').listenable(),
+      valueListenable: box.listenable(),
       builder: (context, box, child) {
         if (box.isEmpty) {
           return Expanded(

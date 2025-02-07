@@ -3,10 +3,9 @@ import 'package:care_task/features/favourite/data/models/product_model.dart';
 import 'package:care_task/features/favourite/ui/screens/favourite_screen.dart';
 import 'package:care_task/features/product_details/ui/product_details_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
-class AppRouter {
-  final Box favoriteBox = Hive.box('favourite');
+class AppRouter { 
+
   Route? generateRoutes(RouteSettings settings) {
     switch (settings.name) {
       case Routes.productDetailsScreen:
@@ -14,7 +13,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => ProductDetailsScreen(
             productModel: productModel,
-            box: favoriteBox, // Pass the box
+          // Pass the box
           ),
         );
       case Routes.favouriteScreen:

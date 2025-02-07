@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:care_task/core/helpers/spacing.dart';
 import 'package:care_task/core/theming/styles.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +34,9 @@ class ProductCard extends StatelessWidget {
             decoration: BoxDecoration(
                 color: ColorsManager.mainPink,
                 borderRadius: BorderRadius.circular(8)),
-            child: Image.network(
-              image,
-              fit: BoxFit.cover,
+            child: CachedNetworkImage(
+              imageUrl: image,
+              fit: BoxFit.fill,
             ),
           ),
           horizontalSpacing(10),

@@ -1,8 +1,7 @@
 import 'package:care_task/core/helpers/spacing.dart';
 import 'package:flutter/material.dart';
-
 import '../../core/widgets/main_appbar.dart';
-import '../products/ui/product_list_view.dart';
+import '../products/ui/products_bloc_builder.dart';
 
 class TabletScaffold extends StatelessWidget {
   const TabletScaffold({super.key});
@@ -17,7 +16,7 @@ class TabletScaffold extends StatelessWidget {
         child: Column(
           children: [
             verticalSpacing(25),
-            const ProductListView(),
+            const ProductsBlocBuilder(),
           ],
         ),
       )),

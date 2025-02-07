@@ -1,44 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:care_task/core/theming/styles.dart';
 import 'package:care_task/core/widgets/app_snack_bar.dart';
 import 'package:care_task/features/favourite/data/models/product_model.dart';
-import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class ProductDetailsAppbar extends StatelessWidget
     implements PreferredSizeWidget {
-  const ProductDetailsAppbar(
-      {super.key, required this.productModel, required this.box});
+  const ProductDetailsAppbar({super.key, required this.productModel});
+
   final ProductModel productModel;
-  final Box box;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
+    final box = Hive.box<ProductModel>('favourite');
     return ValueListenableBuilder(
       valueListenable: box.listenable(),
-      builder: (context, Box box, child) {
+      builder: (context, box, child) {
         bool isFavorite = box.containsKey(productModel.id);
         return AppBar(
-          backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: false,
           elevation: 0.0,
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
           surfaceTintColor: Colors.transparent,
           leading: IconButton(
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                ),
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Product Details',
-                style: TextStyles.font20WhiteSemiBold,
-              ),
+              Text('Product Details', style: TextStyles.font20WhiteSemiBold),
               GestureDetector(
                 onTap: () => _toggleFavorite(context, box),
                 child: Container(
@@ -60,7 +57,8 @@ class ProductDetailsAppbar extends StatelessWidget
     );
   }
 
-  Future<void> _toggleFavorite(BuildContext context, Box box) async {
+  Future<void> _toggleFavorite(
+      BuildContext context, Box<ProductModel> box) async {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     if (box.containsKey(productModel.id)) {
       await box.delete(productModel.id);

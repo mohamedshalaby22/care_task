@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../core/di/dependency_injection.dart';
+import '../products/logic/cubit/products_cubit.dart';
 
 class ResponsiveLayout extends StatelessWidget {
   const ResponsiveLayout({
@@ -28,16 +32,19 @@ class ResponsiveLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
-      if (constraints.maxWidth < 500) {
-        return mobileSacffold;
-      }
-      if (constraints.maxWidth < 1100) {
-        return tabletScaffold;
-      } else {
-        return desktopScaffold;
-      }
-    });
+    return BlocProvider(
+     create: (context) => ProductsCubit(getIt())..fetchProducts(),
+      child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+        if (constraints.maxWidth < 500) {
+          return mobileSacffold;
+        }
+        if (constraints.maxWidth < 1100) {
+          return tabletScaffold;
+        } else {
+          return desktopScaffold;
+        }
+      }),
+    );
   }
 }

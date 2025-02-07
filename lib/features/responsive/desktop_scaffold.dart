@@ -1,9 +1,9 @@
 import 'package:care_task/core/widgets/main_appbar.dart';
-import 'package:care_task/features/products/ui/product_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/helpers/spacing.dart';
+import '../products/ui/products_bloc_builder.dart';
 
 class DesktopScaffold extends StatelessWidget {
   const DesktopScaffold({super.key});
@@ -18,8 +18,7 @@ class DesktopScaffold extends StatelessWidget {
         child: Column(
           children: [
             verticalSpacing(25),
-            const ProductListView(),
-           
+            const ProductsBlocBuilder(),
           ],
         ),
       )),
