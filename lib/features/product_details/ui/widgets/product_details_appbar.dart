@@ -15,9 +15,10 @@ class ProductDetailsAppbar extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    final box = Hive.box<ProductModel>('favourite');
+    // final Box<ProductModel> box = Hive.box<ProductModel>('favourite');
+
     return ValueListenableBuilder(
-      valueListenable: box.listenable(),
+      valueListenable: Hive.box<ProductModel>('favourite').listenable(),
       builder: (context, box, child) {
         bool isFavorite = box.containsKey(productModel.id);
         return AppBar(

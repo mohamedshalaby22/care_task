@@ -16,7 +16,7 @@ class FavouriteScreen extends StatelessWidget {
         child: Column(
           children: [
             verticalSpacing(10),
-            const FavouriteListView(),
+           const  FavouriteListView(),
           ],
         ),
       )),
