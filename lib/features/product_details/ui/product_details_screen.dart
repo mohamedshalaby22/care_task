@@ -3,7 +3,7 @@ import 'package:care_task/features/favourite/data/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'widgets/product_details_appbar.dart';
-import 'widgets/product_details_section.dart';
+import 'widgets/product_details_bloc_builder.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen(
@@ -23,7 +23,8 @@ class ProductDetailsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               verticalSpacing(15),
-              const ProductDetailsSection(),
+            const ProductDetailsBlocBuilder(),
+          
               verticalSpacing(15),
             ],
           ),

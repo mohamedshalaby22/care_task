@@ -1,15 +1,15 @@
+import 'package:care_task/features/product_details/ui/widgets/product_details_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../logic/cubit/products_cubit.dart';
-import 'product_list_view.dart';
+import '../../logic/cubit/product_details_cubit.dart';
 
-class ProductsBlocBuilder extends StatelessWidget {
-  const ProductsBlocBuilder({super.key});
+class ProductDetailsBlocBuilder extends StatelessWidget {
+  const ProductDetailsBlocBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductsCubit, ProductsState>(
+    return BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
       buildWhen: (previous, current) =>
           current is Loading || current is Success || current is Error,
       builder: (context, state) {
@@ -23,8 +23,8 @@ class ProductsBlocBuilder extends StatelessWidget {
               ),
             ),
           );
-        }, success: (productsResponse) {
-          return setupSuccess(productsResponse);
+        }, success: (productDetailsResponse) {
+          return setupSuccess(productDetailsResponse);
         }, error: (errorHandler) {
           return const SizedBox.shrink();
         }, orElse: () {
@@ -34,9 +34,9 @@ class ProductsBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget setupSuccess(products) {
-    return ProductListView(
-      products: products,
+  Widget setupSuccess(product) {
+    return ProductDetailsSection(
+      productDetails: product,
     );
   }
 }

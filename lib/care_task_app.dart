@@ -1,5 +1,4 @@
 import 'package:care_task/core/routing/app_router.dart';
-import 'package:care_task/core/theming/colors.dart';
 import 'package:care_task/features/responsive/mobile_scaffold.dart';
 import 'package:care_task/features/responsive/responsive_layout.dart';
 import 'package:care_task/features/responsive/tablet_scaffold.dart';
@@ -26,7 +25,7 @@ class CareTaskApp extends StatelessWidget {
               statusBarIconBrightness: Brightness.dark,
             ),
           ),
-          scaffoldBackgroundColor: ColorsManager.mainPink
+          scaffoldBackgroundColor: Colors.grey[100]
         ),
          onGenerateRoute: appRouter.generateRoutes,
         debugShowCheckedModeBanner: false,

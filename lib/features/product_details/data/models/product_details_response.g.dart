@@ -17,13 +17,3 @@ ProductDetailsResponse _$ProductDetailsResponseFromJson(
       image: json['image'] as String? ?? '',
     );
 
-Map<String, dynamic> _$ProductDetailsResponseToJson(
-        ProductDetailsResponse instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'price': instance.price,
-      'description': instance.description,
-      'category': instance.category,
-      'image': instance.image,
-    };

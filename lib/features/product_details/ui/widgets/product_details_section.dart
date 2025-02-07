@@ -1,45 +1,49 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:care_task/core/helpers/spacing.dart';
 import 'package:care_task/core/theming/styles.dart';
-import 'package:care_task/features/responsive/responsive_layout.dart';
+import 'package:care_task/features/product_details/data/models/product_details_response.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductDetailsSection extends StatelessWidget {
-  const ProductDetailsSection({super.key});
-
+  const ProductDetailsSection({super.key, required this.productDetails});
+  final ProductDetailsResponse productDetails;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildProductImage(
-            context: context,
-            image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg'),
+          context: context,
+          image: productDetails.image,
+        ),
         verticalSpacing(15),
         _buildTitleAndDes(
-            title: 'Mens Casual Premium Slim Fit T-Shirts ',
-            description:
-                'Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.'),
-        _buildCategory(category: 'men\'s clothing', context: context),
+          title: productDetails.title,
+          description: productDetails.description,
+        ),
+        _buildCategory(category: productDetails.category, context: context),
         verticalSpacing(15),
-        _buildPrice(price: '\$22.3', context: context),
+        _buildPrice(
+            price: '\$${productDetails.price.toString()}', context: context),
       ],
     );
   }
 
-  Column _buildCategory(
+  Row _buildCategory(
       {required String category, required BuildContext context}) {
-    return Column(
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Category:',
-          style: TextStyles.font16BlackMedium,
+          style: TextStyles.font14GreyMedium,
         ),
-        verticalSpacing(5),
-        Text(
-          category,
-          style: TextStyles.font16WhiteMedium,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            category,
+            style: TextStyles.font16BlackMedium,
+          ),
         ),
       ],
     );
@@ -47,27 +51,20 @@ class ProductDetailsSection extends StatelessWidget {
 
   Widget _buildTitleAndDes(
       {required String title, required String description}) {
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: TextStyles.font16WhiteMedium,
-          ),
-          verticalSpacing(10),
-          Text(
-            'Description:',
-            style: TextStyles.font16BlackMedium,
-          ),
-          verticalSpacing(5),
-          Text(
-            description,
-            style: TextStyles.font16WhiteMedium,
-          ),
-          verticalSpacing(15),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: TextStyles.font16BlackMedium,
+        ),
+        verticalSpacing(10),
+        Text(
+          description,
+          style: TextStyles.font14GreyMedium,
+        ),
+        verticalSpacing(15),
+      ],
     );
   }
 
@@ -76,26 +73,28 @@ class ProductDetailsSection extends StatelessWidget {
     return Center(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15),
-        child: Image.network(
-            width: ResponsiveLayout.isDesktop(context) ? 70.w : 200,
-            fit: BoxFit.cover,
-            image),
+        child: CachedNetworkImage(
+          imageUrl: image,
+          width: 200,
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }
 
-  Column _buildPrice({required String price, required BuildContext context}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+  Row _buildPrice({required String price, required BuildContext context}) {
+    return Row(
       children: [
         Text(
           'Price:',
-          style: TextStyles.font16BlackMedium,
+          style: TextStyles.font14GreyMedium,
         ),
-        verticalSpacing(5),
-        Text(
-          price,
-          style: TextStyles.font16WhiteMedium,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            price,
+            style: TextStyles.font16BlackMedium,
+          ),
         ),
       ],
     );

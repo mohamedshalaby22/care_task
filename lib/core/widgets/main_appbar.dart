@@ -12,12 +12,13 @@ class MainAppbar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Text(
             'CARECOMME',
-            style: TextStyles.font20WhiteSemiBold,
+            style: TextStyles.font2BlackSemiBold,
           ),
           const Spacer(),
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
+               border: Border.all(color: Colors.black),
               borderRadius: BorderRadius.circular(8),
             ),
             child: IconButton(

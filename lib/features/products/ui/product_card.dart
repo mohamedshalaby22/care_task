@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:care_task/core/helpers/spacing.dart';
 import 'package:care_task/core/theming/styles.dart';
 import 'package:flutter/material.dart';
-import '../../../core/theming/colors.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard(
@@ -22,6 +21,7 @@ class ProductCard extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: Colors.white,
+         border: Border.all(color: Colors.black,),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -32,11 +32,10 @@ class ProductCard extends StatelessWidget {
             width: 100,
             height: 100,
             decoration: BoxDecoration(
-                color: ColorsManager.mainPink,
                 borderRadius: BorderRadius.circular(8)),
             child: CachedNetworkImage(
               imageUrl: image,
-              fit: BoxFit.fill,
+              fit: BoxFit.contain,
             ),
           ),
           horizontalSpacing(10),
@@ -55,7 +54,7 @@ class ProductCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      price,
+                      '\$$price',
                       style: TextStyles.font16BlackMedium,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
@@ -65,7 +64,7 @@ class ProductCard extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
-                          color: ColorsManager.mainPink,
+                        border: Border.all(color: Colors.black),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Icon(

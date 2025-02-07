@@ -15,13 +15,13 @@ class FavouriteAppbar extends StatelessWidget
         leading: IconButton(
                 icon: const Icon(
                   Icons.arrow_back,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
                 onPressed: () => Navigator.pop(context),
               ),
         title: Text(
           'Favourite',
-          style: TextStyles.font20WhiteSemiBold,
+          style: TextStyles.font2BlackSemiBold,
         ),
       );
   }
