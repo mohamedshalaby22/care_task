@@ -11,7 +11,7 @@ class ProductDetailsApiService {
       final jsonData = json.decode(response.body);
       return ProductDetailsResponse.fromJson(jsonData);
     } else {
-      throw Exception('Failed to load products');
+      throw Exception('Failed to load product details');
     }
   }
 }

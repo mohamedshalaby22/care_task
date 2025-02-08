@@ -61,8 +61,7 @@ dev_dependencies:
 ### Installation Steps
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repo/flutter-ecommerce-app.git
-   cd flutter-ecommerce-app
+   git clone https://github.com/mohamedshalaby22/care_task
    ```
 2. Install dependencies:
    ```sh
